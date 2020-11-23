@@ -1,0 +1,18 @@
+
+version: '3'
+
+services:
+  app:
+    build:
+      context: .
+    ports:
+      - 4000:4000
+    volumes:
+      - ./src:/home/app/src:cached
+      - ./package.json:/home/app/package.json:cached
+  mongo:
+    image: mongo
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: root
